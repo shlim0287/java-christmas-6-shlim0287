@@ -16,22 +16,33 @@ public class MenuOrderParser {
             StringTokenizer order = splitByBar(tokenizer);
             String menuName = order.nextToken();
             int quantity = Integer.parseInt(order.nextToken());
-            MenuItem existingMenuItem=orderItems.findMenuItemByName(menuName);
-
-            if(existingMenuItem !=null){
-                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
-            }
-
+            validateDuplicationMenu(menuName);
             for(MenuItem menuItem : MenuItem.values()){
-                if(isMatchName(menuName, menuItem)){
-                    orderItems.addOrder(new OrderItem(menuItem,quantity));
-                }
-                if(!isMatchName(menuName,menuItem)){
-                    throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
-                }
+                addOrderToOrderList(menuName, quantity, menuItem);
+                validateUniqueMenu(menuName, menuItem);
             }
         }
         return orderItems.getOrderItems();
+    }
+
+    private void addOrderToOrderList(String menuName, int quantity, MenuItem menuItem) {
+        if(isMatchName(menuName, menuItem)){
+            orderItems.addOrder(new OrderItem(menuItem, quantity));
+        }
+    }
+
+    private static void validateUniqueMenu(String menuName, MenuItem menuItem) {
+        if(!isMatchName(menuName, menuItem)){
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+
+    private void validateDuplicationMenu(String menuName) {
+        MenuItem existingMenuItem=orderItems.findMenuItemByName(menuName);
+
+        if(existingMenuItem !=null){
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
 
     private static boolean isMatchName(String menuName, MenuItem menuItem) {
