@@ -17,12 +17,16 @@ public class MenuOrderParser {
             String menuName = order.nextToken();
             int quantity = Integer.parseInt(order.nextToken());
             validateDuplicationMenu(menuName);
-            for(MenuItem menuItem : MenuItem.values()){
-                addOrderToOrderList(menuName, quantity, menuItem);
-                validateUniqueMenu(menuName, menuItem);
-            }
+            addAllOrderToOrderList(menuName, quantity);
         }
         return orderItems.getOrderItems();
+    }
+
+    private void addAllOrderToOrderList(String menuName, int quantity) {
+        for(MenuItem menuItem : MenuItem.values()){
+            validateUniqueMenu(menuName, menuItem);
+            addOrderToOrderList(menuName, quantity, menuItem);
+        }
     }
 
     private void addOrderToOrderList(String menuName, int quantity, MenuItem menuItem) {
