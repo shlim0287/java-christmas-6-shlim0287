@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.model.menu.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,16 @@ public class OrderItems {
 
     public void addOrder(OrderItem orderItem){
         orderItems.add(orderItem);
+    }
+
+    public MenuItem findMenuItemByName(String menuName){
+        for(OrderItem orderItem:orderItems){
+            String menuNameInOrderItem = orderItem.getMenuItem().getMenuName();
+            if(menuNameInOrderItem.equals(menuName)){
+                return orderItem.getMenuItem();
+            }
+        }
+        return null;
     }
 
     public List<OrderItem> getOrderItems() {
