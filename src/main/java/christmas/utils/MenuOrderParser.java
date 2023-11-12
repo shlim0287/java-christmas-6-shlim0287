@@ -23,9 +23,14 @@ public class MenuOrderParser {
     }
 
     private void addAllOrderToOrderList(String menuName, int quantity) {
-        for(MenuItem menuItem : MenuItem.values()){
-            validateUniqueMenu(menuName, menuItem);
-            addOrderToOrderList(menuName, quantity, menuItem);
+        MenuItem specificMenuItem = findMenuItemByName(menuName);
+
+        if (specificMenuItem != null) {
+            addOrderToOrderList(menuName, quantity, specificMenuItem);
+            validateUniqueMenu(menuName, specificMenuItem);
+        }
+        if(specificMenuItem==null){
+            throw new IllegalArgumentException("[ERROR] 주문한 메뉴를 찾을 수 없습니다.");
         }
     }
 
@@ -61,5 +66,14 @@ public class MenuOrderParser {
     private StringTokenizer splitByComma(String input) {
         StringTokenizer tokenizer=new StringTokenizer(input,",");
         return tokenizer;
+    }
+
+    private MenuItem findMenuItemByName(String menuName) {
+        for (MenuItem menuItem : MenuItem.values()) {
+            if (isMatchName(menuName, menuItem)) {
+                return menuItem;
+            }
+        }
+        return null;
     }
 }
