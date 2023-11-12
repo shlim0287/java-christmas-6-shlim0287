@@ -24,12 +24,15 @@ public class MenuOrderParser {
 
     private void addAllOrderToOrderList(String menuName, int quantity) {
         MenuItem specificMenuItem = findMenuItemByName(menuName);
-
         if (specificMenuItem != null) {
-            addOrderToOrderList(menuName, quantity, specificMenuItem);
             validateUniqueMenu(menuName, specificMenuItem);
+            addOrderToOrderList(menuName, quantity, specificMenuItem);
         }
-        if(specificMenuItem==null){
+        validateMenuName(specificMenuItem);
+    }
+
+    private static void validateMenuName(MenuItem specificMenuItem) {
+        if(specificMenuItem ==null){
             throw new IllegalArgumentException("[ERROR] 주문한 메뉴를 찾을 수 없습니다.");
         }
     }
