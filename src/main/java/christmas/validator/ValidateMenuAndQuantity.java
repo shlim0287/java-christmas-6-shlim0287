@@ -3,7 +3,7 @@ package christmas.validator;
 import java.util.StringTokenizer;
 
 public class ValidateMenuAndQuantity {
-    public static void validate(String input){
+    public void validate(String input){
         validateEmpty(input);
         validateOrderFormat(input);
         validateMenuOrders(input);
@@ -42,5 +42,7 @@ public class ValidateMenuAndQuantity {
     private static boolean isMatchesMenuOrder(String input) {
         return input.matches("^[^,]+-\\d+$");
     }
+
+
 
 }
