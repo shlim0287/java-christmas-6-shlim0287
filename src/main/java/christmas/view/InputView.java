@@ -2,6 +2,7 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.model.OrderItem;
+import christmas.utils.MenuOrderParser;
 import christmas.validator.ValidateMenuAndQuantity;
 import christmas.validator.ValidateVisitDate;
 import java.util.List;
@@ -13,6 +14,13 @@ public class InputView {
         String input = console();
         ValidateVisitDate.validate(input);
         return Integer.parseInt(input);
+    }
+
+    public List<OrderItem> requestOrderMenuAndQuantity(){
+        String input = console();
+        ValidateMenuAndQuantity.validate(input);
+        MenuOrderParser parser=new MenuOrderParser();
+        return parser.parseMenuOrder(input);
     }
 
 
