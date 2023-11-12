@@ -4,7 +4,7 @@ public class ValidateVisitDate {
     
     static final int START_DATE=1;
     static final int END_DATE=31;
-    public void validate(String input){
+    public static void validate(String input){
         validateEmpty(input);
         validateNumberRange(input);
         validateNumerical(input);
