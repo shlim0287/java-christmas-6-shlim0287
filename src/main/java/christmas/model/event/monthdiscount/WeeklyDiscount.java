@@ -34,6 +34,16 @@ public class WeeklyDiscount {
         }
         return totalDiscount;
     }
+    private static int applyWeekdayDiscount(OrderItems orderItems) {
+        int totalDiscount=0;
+        for (OrderItem orderitem:orderItems.getOrderItems()){
+            String menuTypeString = getMenuTypeString(orderitem);
+            if(menuTypeString=="DESSERT"){
+                totalDiscount+=WEEKDAY_DISCOUNT_AMOUNT*orderitem.getQuantity();
+            }
+        }
+        return totalDiscount;
+    }
 
     private static String getMenuTypeString(OrderItem orderitem) {
         MenuItem menuItem = orderitem.getMenuItem();
@@ -42,9 +52,7 @@ public class WeeklyDiscount {
         return menuTypeString;
     }
 
-    private static int applyWeekdayDiscount(OrderItems orderItems) {
-        return 0;
-    }
+
 
     private static boolean isWeekend(DayOfWeek dayOfWeek){
         return dayOfWeek==DayOfWeek.FRIDAY|| dayOfWeek==DayOfWeek.SATURDAY;
