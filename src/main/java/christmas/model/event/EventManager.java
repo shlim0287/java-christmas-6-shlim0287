@@ -28,4 +28,20 @@ public class EventManager {
         return totalDiscount;
     }
 
+    public List<Event> getApplicableEvent(OrderItems orderItems,int day){
+        List<Event> applicableEvents=new ArrayList<>();
+        
+        for(Event event:events){
+            validateApplicable(orderItems, day, applicableEvents, event);
+        }
+        return applicableEvents;
+    }
+
+    private static void validateApplicable(OrderItems orderItems, int day, List<Event> applicableEvents, Event event) {
+        int discount = event.calculateDiscount(orderItems, day);
+        if(discount!=0){
+            applicableEvents.add(event);
+        }
+    }
+
 }
