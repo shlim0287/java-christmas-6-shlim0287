@@ -5,4 +5,6 @@ import christmas.model.OrderItems;
 
 public interface Event {
     int calculateDiscount(OrderItems orderItems, int day);
+
+    String getEventName();
 }
