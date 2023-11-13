@@ -1,6 +1,9 @@
 package christmas.model.event.monthdiscount;
 
+import christmas.model.OrderItem;
 import christmas.model.OrderItems;
+import christmas.model.menu.MenuItem;
+import christmas.model.menu.MenuType;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
@@ -22,7 +25,21 @@ public class WeeklyDiscount {
     }
 
     private static int applyWeekendDiscount(OrderItems orderItems) {
-        return 0;
+        int totalDiscount=0;
+        for (OrderItem orderitem:orderItems.getOrderItems()){
+            String menuTypeString = getMenuTypeString(orderitem);
+            if(menuTypeString=="MAIN"){
+                totalDiscount+=WEEKEND_DISCOUNT_AMOUNT*orderitem.getQuantity();
+            }
+        }
+        return totalDiscount;
+    }
+
+    private static String getMenuTypeString(OrderItem orderitem) {
+        MenuItem menuItem = orderitem.getMenuItem();
+        MenuType menuType = menuItem.getMenuType();
+        String menuTypeString = menuType.toString();
+        return menuTypeString;
     }
 
     private static int applyWeekdayDiscount(OrderItems orderItems) {
