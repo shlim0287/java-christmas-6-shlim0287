@@ -16,10 +16,17 @@ public class MenuOrderParser {
             StringTokenizer order = splitByBar(tokenizer);
             String menuName = order.nextToken();
             int quantity = Integer.parseInt(order.nextToken());
+            validateMenuCountZero(quantity);
             validateDuplicationMenu(menuName);
             addOrderToOrderListIfValid(menuName, quantity);
         }
         return orderItems.getOrderItems();
+    }
+
+    private static void validateMenuCountZero(int quantity) {
+        if(quantity ==0){
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
 
     private void addOrderToOrderListIfValid(String menuName, int quantity) {
