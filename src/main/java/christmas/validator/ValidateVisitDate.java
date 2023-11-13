@@ -6,8 +6,8 @@ public class ValidateVisitDate {
     static final int END_DATE=31;
     public static void validate(String input){
         validateEmpty(input);
-        validateNumberRange(input);
         validateNumerical(input);
+        validateNumberRange(input);
     }
 
     private static void validateEmpty(String input) {
@@ -40,6 +40,6 @@ public class ValidateVisitDate {
     }
 
     private static boolean isNotNumerical(String input) {
-        return input.matches("-?\\d+");
+        return input.matches(".*\\D.*");
     }
 }
