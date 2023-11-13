@@ -21,6 +21,14 @@ public class OrderItems {
         return null;
     }
 
+    public int getTotalQuantityOfMenuItems(List<OrderItem> orderItems) {
+        int totalQuantity = 0;
+        for (OrderItem orderItem : orderItems) {
+            totalQuantity += orderItem.getQuantity();
+        }
+        return totalQuantity;
+    }
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
