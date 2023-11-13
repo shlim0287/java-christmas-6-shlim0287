@@ -1,5 +1,6 @@
 package christmas.model.event;
 
+import christmas.model.OrderItems;
 import christmas.model.event.monthdiscount.FreebieMenu;
 import christmas.model.event.monthdiscount.SpecialDiscount;
 import christmas.model.event.monthdiscount.WeekdayDiscount;
@@ -19,5 +20,12 @@ public class EventManager {
         events.add(new FreebieMenu());
     }
 
+    public int calculateTotalDiscount(OrderItems orderItems,int day){
+        int totalDiscount=0;
+        for(Event event:events){
+            totalDiscount+=event.calculateDiscount(orderItems,day);
+        }
+        return totalDiscount;
+    }
 
 }
