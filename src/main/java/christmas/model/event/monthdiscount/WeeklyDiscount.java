@@ -2,16 +2,18 @@ package christmas.model.event.monthdiscount;
 
 import christmas.model.OrderItem;
 import christmas.model.OrderItems;
+import christmas.model.event.Event;
 import christmas.model.menu.MenuItem;
 import christmas.model.menu.MenuType;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class WeeklyDiscount {
+public class WeeklyDiscount implements Event {
     private static final int WEEKDAY_DISCOUNT_AMOUNT=2023;
     private static final int WEEKEND_DISCOUNT_AMOUNT=2023;
 
-    public static int calculateDiscount(int day, OrderItems orderItems){
+    @Override
+    public int calculateDiscount(OrderItems orderItems, int day) {
         LocalDate date=LocalDate.of(2023,12,day);
         DayOfWeek dayOfWeek=date.getDayOfWeek();
 
@@ -52,9 +54,8 @@ public class WeeklyDiscount {
         return menuTypeString;
     }
 
-
-
     private static boolean isWeekend(DayOfWeek dayOfWeek){
         return dayOfWeek==DayOfWeek.FRIDAY|| dayOfWeek==DayOfWeek.SATURDAY;
     }
+
 }
