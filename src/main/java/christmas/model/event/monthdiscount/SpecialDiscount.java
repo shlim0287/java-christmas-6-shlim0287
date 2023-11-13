@@ -1,6 +1,7 @@
 package christmas.model.event.monthdiscount;
 
 import christmas.model.OrderItem;
+import christmas.model.OrderItems;
 import christmas.model.event.Event;
 import java.time.LocalDate;
 import java.util.Set;
@@ -10,7 +11,7 @@ public class SpecialDiscount implements Event {
     private static final int SPECIAL_DISCOUNT_AMOUNT=1000;
 
     @Override
-    public int calculateDiscount(OrderItem orderItem,int day){
+    public int calculateDiscount(OrderItems orderItems, int day){
         if(isSpecialDiscountDay(day)){
             return SPECIAL_DISCOUNT_AMOUNT;
         }
