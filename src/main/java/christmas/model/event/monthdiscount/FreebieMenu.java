@@ -17,6 +17,11 @@ public class FreebieMenu implements Event {
         return 0;
     }
 
+    @Override
+    public String getEventName() {
+        return "증정 이벤트";
+    }
+
     public static OrderItem applicableOrNot (OrderItems orderItems) {
         int totalOrderPrice= orderItems.getTotalPriceOfOrder(orderItems);
         int freebieCount=totalOrderPrice/APPLICABLE_FREEBIE_AMOUNT;

@@ -18,6 +18,11 @@ public class SpecialDiscount implements Event {
         return 0;
     }
 
+    @Override
+    public String getEventName() {
+        return "특별 할인";
+    }
+
     private boolean isSpecialDiscountDay(int day){
         return SPECIAL_DISCOUNT_DAYS.contains(day);
     }
