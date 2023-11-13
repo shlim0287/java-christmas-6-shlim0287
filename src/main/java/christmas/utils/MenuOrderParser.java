@@ -10,7 +10,7 @@ public class MenuOrderParser {
 
     OrderItems orderItems= new OrderItems();
 
-    public  List<OrderItem> parseMenuOrder(String input){
+    public  OrderItems parseMenuOrder(String input){
         StringTokenizer tokenizer = splitByComma(input);
         while(tokenizer.hasMoreTokens()){
             StringTokenizer order = splitByBar(tokenizer);
@@ -20,7 +20,7 @@ public class MenuOrderParser {
             validateDuplicationMenu(menuName);
             addOrderToOrderListIfValid(menuName, quantity);
         }
-        return orderItems.getOrderItems();
+        return orderItems;
     }
 
     private static void validateMenuCountZero(int quantity) {
