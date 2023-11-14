@@ -56,4 +56,10 @@ public class OutputView {
             }
         }
     }
+
+    public static void printTotalDiscount(OrderItems orderItems,int visitDate,EventManager manager){
+        System.out.println("<총해택 금액>");
+        int totalDiscount = manager.calculateTotalDiscount(orderItems, visitDate);
+        System.out.printf("-%,d원\n",totalDiscount );
+    }
 }
