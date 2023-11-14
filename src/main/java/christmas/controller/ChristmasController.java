@@ -4,6 +4,7 @@ import christmas.model.OrderItems;
 import christmas.model.event.EventManager;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import org.mockito.internal.matchers.Or;
 
 public class ChristmasController {
     InputView inputView=new InputView();
@@ -47,6 +48,19 @@ public class ChristmasController {
         OutputView.printFreebieApplicable(orderItems);
     }
 
+    private void printEventBenefit(OrderItems orderItems,int visitDate,EventManager manager){
+        OutputView.printEventBenefit(orderItems,visitDate,manager);
+    }
 
+    private void printTotalDiscount(OrderItems orderItems,int visitDate,EventManager manager){
+        OutputView.printTotalDiscount(orderItems,visitDate,manager);
+    }
 
+    private void printExpectedPrice(OrderItems orderItems,int visitDate,EventManager manager){
+        OutputView.printExpectedPrice(orderItems,manager,visitDate);
+    }
+
+    private void printEventBadge(OrderItems orderItems,int visitDate,EventManager manager){
+        OutputView.printEventBadge(orderItems,visitDate,manager);
+    }
 }
