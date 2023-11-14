@@ -28,6 +28,12 @@ public class ChristmasController {
         }
     }
 
+    private void printPreviewEventBenefits(int visitDate){
+        OutputView.printPreviewEventBenefits(visitDate);
+    }
 
+    private void printOrderedMenus(OrderItems orderItems){
+        OutputView.printOrderedMenus(orderItems);
+    }
 
 }
