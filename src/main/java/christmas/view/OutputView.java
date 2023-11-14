@@ -22,4 +22,10 @@ public class OutputView {
             System.out.println(orderItem.getMenuItem().getMenuName()+" "+orderItem.getQuantity()+"개");
         }
     }
+
+    public static void printTotalPriceOfOrder(OrderItems orderItems){
+        System.out.println("<할인 전 총주문 금액>");
+        int totalPriceOfOrder = orderItems.getTotalPriceOfOrder(orderItems);
+        System.out.println(totalPriceOfOrder);
+    }
 }
