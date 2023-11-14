@@ -2,7 +2,10 @@ package christmas.view;
 
 import christmas.model.OrderItem;
 import christmas.model.OrderItems;
+import christmas.model.event.Event;
+import christmas.model.event.EventManager;
 import christmas.model.event.monthdiscount.FreebieMenu;
+import java.util.List;
 
 public class OutputView {
     public static void printRequestVisitDate(){
@@ -39,6 +42,18 @@ public class OutputView {
         }
         if(orderItem==null){
             System.out.println("없음");
+        }
+    }
+
+    public static void printEventBenefit(OrderItems orderItems,int visitDate,EventManager manager){
+        System.out.println("<해택 내역>");
+        List<Event> applicableEvent = manager.getApplicableEvent(orderItems, visitDate);
+
+        for (Event event : applicableEvent) {
+            int discount = event.calculateDiscount(orderItems, visitDate);
+            if (discount != 0) {
+                System.out.printf("%s: -%,d원\n", event.getEventName(), discount);
+            }
         }
     }
 }
