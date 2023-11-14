@@ -2,6 +2,7 @@ package christmas.view;
 
 import christmas.model.OrderItem;
 import christmas.model.OrderItems;
+import christmas.model.event.monthdiscount.FreebieMenu;
 
 public class OutputView {
     public static void printRequestVisitDate(){
@@ -27,5 +28,17 @@ public class OutputView {
         System.out.println("<할인 전 총주문 금액>");
         int totalPriceOfOrder = orderItems.getTotalPriceOfOrder(orderItems);
         System.out.println(totalPriceOfOrder);
+    }
+
+    public static void printFreebieApplicable(OrderItems orderItems){
+        System.out.println("<증정 메뉴>");
+        OrderItem orderItem = FreebieMenu.applicableOrNot(orderItems);
+
+        if(orderItem!=null){
+            System.out.println(orderItem.getMenuItem().getMenuName()+" "+orderItem.getQuantity()+"개");
+        }
+        if(orderItem==null){
+            System.out.println("없음");
+        }
     }
 }
