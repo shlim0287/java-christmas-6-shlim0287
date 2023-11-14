@@ -81,4 +81,9 @@ public class OutputView {
         String badge = Badge.getCategory(manager.calculateTotalDiscount(orderItems, visitDate));
         System.out.println(badge);
     }
+
+    public static void printErrorMessage(String errorMessage){
+        System.out.println(errorMessage);
+    }
+
 }
