@@ -11,7 +11,7 @@ public class ValidateMenuAndQuantity {
 
     private static void validateEmpty(String input){
         if(input.isBlank()){
-            throw new IllegalArgumentException("[ERROR] 입력된 값이 없습니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
 

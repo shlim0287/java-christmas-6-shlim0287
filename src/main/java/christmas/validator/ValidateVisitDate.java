@@ -4,23 +4,23 @@ public class ValidateVisitDate {
     
     static final int START_DATE=1;
     static final int END_DATE=31;
-    public static String validate(String input){
-        return validateEmpty(input)+validateNumerical(input)+validateNumberRange(input);
+    public static void validate(String input){
+        validateEmpty(input);
+        validateNumerical(input);
+        validateNumberRange(input);
     }
 
-    private static String validateEmpty(String input) {
+    private static void validateEmpty(String input) {
         if(input.isBlank()){
-            return "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
-        return "";
     }
 
-    private static String validateNumberRange(String input) {
+    private static void validateNumberRange(String input) {
         int visitDate = Integer.parseInt(input);
         if(isOutOfRange(visitDate)){
-            return "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
-        return "";
     }
     
     private static boolean isOutOfRange(int visitDate){
@@ -33,11 +33,10 @@ public class ValidateVisitDate {
         return false;
     }
 
-    private static String validateNumerical(String input) {
+    private static void validateNumerical(String input) {
         if(isNotNumerical(input)){
-            return "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
-        return "";
     }
 
     private static boolean isNotNumerical(String input) {
