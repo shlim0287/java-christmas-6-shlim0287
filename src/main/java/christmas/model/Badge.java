@@ -2,10 +2,10 @@ package christmas.model;
 
 public class Badge {
     private static final int STAR_THRESHOLD = 5000;
-    public static final int TREE_THRESHOLD = 10000;
-    public static final int SANTA_THRESHOLD = 20000;
+    private static final int TREE_THRESHOLD = 10000;
+    private static final int SANTA_THRESHOLD = 20000;
 
-    private static String getCategory(int totalDiscount) {
+    public static String getCategory(int totalDiscount) {
         if (isStar(totalDiscount)) {
             return "별";
         }
