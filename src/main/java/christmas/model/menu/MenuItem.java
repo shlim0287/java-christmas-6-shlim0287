@@ -8,7 +8,7 @@ public enum MenuItem {
     CAESAR_SALAD(MenuType.APPETIZER,"시저샐러드",8000),
 
     T_BONE_STEAK(MenuType.MAIN,"티본스테이크",55000),
-    BBQ_RIB(MenuType.MAIN,"비비큐립",54000),
+    BBQ_RIB(MenuType.MAIN,"바비큐립",54000),
     SEAFOOD_PASTA(MenuType.MAIN,"해산물파스타",35000),
     CHRISTMAS_PASTA(MenuType.MAIN,"크리스마스파스타",25000),
 
