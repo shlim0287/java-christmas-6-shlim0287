@@ -1,11 +1,14 @@
 package christmas.controller;
 
 import christmas.model.OrderItems;
+import christmas.model.event.EventManager;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class ChristmasController {
     InputView inputView=new InputView();
+    EventManager manager=new EventManager();
+
     private int requestVisitDate(){
         OutputView.printRequestVisitDate();
         while(true){
@@ -35,5 +38,15 @@ public class ChristmasController {
     private void printOrderedMenus(OrderItems orderItems){
         OutputView.printOrderedMenus(orderItems);
     }
+
+    private void printTotalPriceOfOrder(OrderItems orderItems){
+        OutputView.printTotalPriceOfOrder(orderItems);
+    }
+
+    private void printFreebieApplicable(OrderItems orderItems){
+        OutputView.printFreebieApplicable(orderItems);
+    }
+
+
 
 }
