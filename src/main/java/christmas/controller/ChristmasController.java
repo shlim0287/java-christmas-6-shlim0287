@@ -10,6 +10,19 @@ public class ChristmasController {
     InputView inputView=new InputView();
     EventManager manager=new EventManager();
 
+    public void run(){
+        int visitDate = requestVisitDate();
+        OrderItems orderItems = requestOrderMenuAndQuantity();
+        printPreviewEventBenefits(visitDate);
+        printOrderedMenus(orderItems);
+        printTotalPriceOfOrder(orderItems);
+        printFreebieApplicable(orderItems);
+        printEventBenefit(orderItems, visitDate, manager);
+        printTotalDiscount(orderItems, visitDate, manager);
+        printExpectedPrice(orderItems,visitDate,manager);
+        printEventBadge(orderItems,visitDate,manager);
+    }
+
     private int requestVisitDate(){
         OutputView.printRequestVisitDate();
         while(true){
