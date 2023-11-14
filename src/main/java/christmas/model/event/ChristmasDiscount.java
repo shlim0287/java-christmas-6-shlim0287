@@ -15,4 +15,9 @@ public class ChristmasDiscount implements Event{
         }
         return 0;
     }
+
+    @Override
+    public String getEventName() {
+        return "크리스마스 디데이 할인";
+    }
 }

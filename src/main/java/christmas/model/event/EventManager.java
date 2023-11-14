@@ -11,7 +11,7 @@ import java.util.List;
 public class EventManager {
     private final List<Event> events;
 
-    public EventManager(List<Event> events) {
+    public EventManager() {
         this.events = new ArrayList<>();
         events.add(new ChristmasDiscount());
         events.add(new WeekdayDiscount());

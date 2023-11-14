@@ -29,6 +29,14 @@ public class OrderItems {
         return totalQuantity;
     }
 
+    public int getTotalPriceOfOrder(OrderItems orderItems){
+        int totalPrice=0;
+        for(OrderItem orderItem:orderItems.getOrderItems()){
+            totalPrice+=orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
