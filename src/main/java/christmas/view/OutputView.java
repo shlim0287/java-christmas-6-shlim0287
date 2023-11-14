@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.model.Badge;
 import christmas.model.OrderItem;
 import christmas.model.OrderItems;
 import christmas.model.event.Event;
@@ -66,5 +67,11 @@ public class OutputView {
     public static void printExpectedPrice(OrderItems orderItems,EventManager manager,int day){
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.printf("%,d원\n", orderItems.getTotalPriceOfOrder(orderItems)-manager.calculateTotalDiscount(orderItems,day));
+    }
+
+    public static void printEventBadge(OrderItems orderItems,int visitDate,EventManager manager){
+        System.out.println("<12월 이벤트 배지>");
+        String badge = Badge.getCategory(manager.calculateTotalDiscount(orderItems, visitDate));
+        System.out.println(badge);
     }
 }
