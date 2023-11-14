@@ -62,4 +62,9 @@ public class OutputView {
         int totalDiscount = manager.calculateTotalDiscount(orderItems, visitDate);
         System.out.printf("-%,d원\n",totalDiscount );
     }
+
+    public static void printExpectedPrice(OrderItems orderItems,EventManager manager,int day){
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.printf("%,d원\n", orderItems.getTotalPriceOfOrder(orderItems)-manager.calculateTotalDiscount(orderItems,day));
+    }
 }
