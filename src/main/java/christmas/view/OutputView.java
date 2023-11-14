@@ -47,9 +47,11 @@ public class OutputView {
     }
 
     public static void printEventBenefit(OrderItems orderItems,int visitDate,EventManager manager){
-        System.out.println("<해택 내역>");
+        System.out.println("<혜택 내역>");
         List<Event> applicableEvent = manager.getApplicableEvent(orderItems, visitDate);
-
+        if(manager.calculateTotalDiscount(orderItems,visitDate)==0){
+            System.out.println("없음");
+        }
         for (Event event : applicableEvent) {
             int discount = event.calculateDiscount(orderItems, visitDate);
             if (discount != 0) {
@@ -59,9 +61,14 @@ public class OutputView {
     }
 
     public static void printTotalDiscount(OrderItems orderItems,int visitDate,EventManager manager){
-        System.out.println("<총해택 금액>");
+        System.out.println("<총혜택 금액>");
         int totalDiscount = manager.calculateTotalDiscount(orderItems, visitDate);
-        System.out.printf("-%,d원\n",totalDiscount );
+        if(totalDiscount!=0){
+            System.out.printf("-%,d원\n",totalDiscount );
+        }
+        if(totalDiscount==0){
+            System.out.println("없음");
+        }
     }
 
     public static void printExpectedPrice(OrderItems orderItems,EventManager manager,int day){
