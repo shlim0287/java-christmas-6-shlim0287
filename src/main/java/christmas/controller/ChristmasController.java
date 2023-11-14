@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.OrderItems;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -11,9 +12,22 @@ public class ChristmasController {
             try{
                 return inputView.requestVisitDate();
             }catch (IllegalArgumentException e){
-                System.out.println(e.getMessage());
+                OutputView.printErrorMessage(e.getMessage());
             }
         }
     }
+
+    private OrderItems requestOrderMenuAndQuantity(){
+        OutputView.printRequestOrderMenuAndQuantity();
+        while(true){
+            try {
+                return inputView.requestOrderMenuAndQuantity();
+            }catch (IllegalArgumentException e){
+                OutputView.printErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+
 
 }
